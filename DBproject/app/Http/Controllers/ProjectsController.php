@@ -51,7 +51,15 @@ class ProjectsController extends Controller
         //     'description' => request('description')
         // ];
         
-        Project::create(request(['title', 'description']));
+        $attributes = request()->validate([
+            'title' => ['required', 'min:3'],
+            'description' => ['required', 'min:3'],
+            // 'password' => ['required', 'confirmed']
+        ]);
+
+        // return $attributes;
+
+        Project::create($attributes);
 
         // Project::create([
         //     'title' => request('title'),
