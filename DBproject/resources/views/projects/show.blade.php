@@ -23,7 +23,27 @@
 
             @foreach ($project->tasks as $task)
 
-                <li>{{ $task->description }}</li>
+                <div>
+                    {{-- PATCH /projects/id/tasks/id --}}
+
+                    {{-- Le deuxième exemple qu'on utilise en action dans le form. --}}
+                    {{-- PATCH /tasks/id --}}
+
+                    <form method="POST" action="/tasks/{{ $task->id }}">
+                        @method('PATCH')
+                        @csrf
+
+                        <label class="checkbox {{ $task->completed ? 'is-complete' : '' }}" for="completed">
+
+                            <input type="checkbox" name="completed" onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
+
+                            {{ $task->description }}
+
+                        </label>
+
+                    </form>
+                
+                </div>
 
             @endforeach
 
