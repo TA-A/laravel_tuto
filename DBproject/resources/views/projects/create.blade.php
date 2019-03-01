@@ -49,7 +49,9 @@
 
         </div>
 
-        @if ($errors->any())
+        @include('errors')
+
+        {{-- @if ($errors->any())
 
             <div class="notification is-danger">
 
@@ -65,7 +67,7 @@
             
             </div>
 
-        @endif
+        @endif --}}
 
     </form>
 

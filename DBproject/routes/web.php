@@ -37,4 +37,9 @@ Route::resource('projects', 'ProjectsController');
 // Route::patch('/projects/{project}','ProjectsController@update');
 // Route::delete('/projects/{project}','ProjectsController@destroy');
 
+Route::post('/projects/{project}/tasks', 'ProjectTasksController@store');
+// Route::post('/tasks', 'ProjectTasksController@store'); => Même but que la route juste au dessus,
+// toutefois il sera nécessaire d'envoyer 'true' les informations qui indiquent dans quel projet on a ajouté le task.
+// Dans la route du dessus, le projet est déja inclut dans la route, tandis que dans celui en commentaire, non.
+
 Route::patch('/tasks/{task}', 'ProjectTasksController@update');
